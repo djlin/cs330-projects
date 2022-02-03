@@ -1,0 +1,5 @@
+*.o
+server-c-sol
+client-c-sol
+server-go-sol
+client-go-sol
