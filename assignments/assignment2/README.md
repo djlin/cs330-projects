@@ -66,12 +66,12 @@ other students without sharing code.
 2. To complete an HTTP request, one or more of the 
    ( genera-header | request-header | entity-header ) may come after the Request-Line
 
-      Request = Request-Line        ; Section 5.1
-          *(( general-header        ; Section 4.5
-            | request-header        ; Section 5.3
-            | entity-header ) CRLF) ; Section 7.1
-            CRLF
-            [ message-body ]        ; Section 4.3
+        Request = Request-Line        ; Section 5.1
+            *(( general-header        ; Section 4.5
+              | request-header        ; Section 5.3
+              | entity-header ) CRLF) ; Section 7.1
+              CRLF
+              [ message-body ]        ; Section 4.3
 
     Note: If the Request has one or more of the three options above, each header line
     is ended with a CRLF
