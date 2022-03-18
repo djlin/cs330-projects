@@ -35,6 +35,7 @@ void handle_http_request(char *request, int sockfd, char *filename) {
     FILE *file;
     char *abs_path;
     char *file_to_open;
+    char good_http_msg[] = "HTTP/1.1 200\r\n\r\n";
     char error_msg[] = "HTTP/1.1 404 Not Found\r\n\r\n<html><body><h1>404 Not Found</h1></body></html>\r\n";
 
     // method
@@ -50,6 +51,7 @@ void handle_http_request(char *request, int sockfd, char *filename) {
     // open and return the default file
     if(stat(file_to_open, &file_stat) == 0 && (file_stat.st_mode & S_IFREG)== S_IFREG) {
       file = fopen(file_to_open, "r");
+      send(sockfd, good_http_msg, sizeof good_http_msg, 0);
       while( (size = fread(buf, 1, MAX_SIZE, file)) > 0) {
         send(sockfd, buf, size, 0);
       }
